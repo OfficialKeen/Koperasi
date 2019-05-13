@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LapPinjamAll" language="groovy" pageWidth="595" pageHeight="340" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3456f623-f8ed-4731-ac73-d4625d1ce671">
+	<property name="ireport.zoom" value="0.9090909090909115"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="Kode" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     t_pinjam.`kd_pinjaman` AS t_pinjam_kd_pinjaman,
+     t_pinjam.`No_anggota` AS t_pinjam_No_anggota,
+     t_pinjam.`Nama` AS t_pinjam_Nama,
+     t_pinjam.`Jml_pinjam` AS t_pinjam_Jml_pinjam,
+     t_pinjam.`Tgl_pinjam` AS t_pinjam_Tgl_pinjam,
+     t_pinjam.`Lama` AS t_pinjam_Lama,
+     t_pinjam.`Bunga` AS t_pinjam_Bunga,
+     t_pinjam.`Angsuran` AS t_pinjam_Angsuran
+FROM
+     `t_pinjam` t_pinjam
+WHERE
+	t_pinjam.`kd_pinjaman`=$P{Kode}]]>
+	</queryString>
+	<field name="t_pinjam_kd_pinjaman" class="java.lang.String"/>
+	<field name="t_pinjam_No_anggota" class="java.lang.String"/>
+	<field name="t_pinjam_Nama" class="java.lang.String"/>
+	<field name="t_pinjam_Jml_pinjam" class="java.lang.String"/>
+	<field name="t_pinjam_Tgl_pinjam" class="java.sql.Date"/>
+	<field name="t_pinjam_Lama" class="java.lang.String"/>
+	<field name="t_pinjam_Bunga" class="java.lang.String"/>
+	<field name="t_pinjam_Angsuran" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="137" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="65" y="0" width="490" height="33" uuid="29a28c1e-1617-4ded-b417-52e2e8a364c9"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[LAPORAN PINJAMAN PER-ANGGOTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="65" y="33" width="336" height="22" forecolor="#000000" uuid="c974f427-f936-4745-8a78-ce802e34537d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[SRIBHAWONO LAMPUNG TIMUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="84" width="44" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="6b587ddc-8fde-4e00-a567-cecba2249277"/>
+				<text><![CDATA[Kode]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="63" y="84" width="100" height="15" uuid="6d336b34-b3f6-4cbc-8f60-516af683d6c2"/>
+				<textFieldExpression><![CDATA[$F{t_pinjam_kd_pinjaman}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="99" width="63" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="1c7e7f4b-1883-457b-a866-ca5c5cd67900"/>
+				<text><![CDATA[No. Anggota]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="63" y="99" width="100" height="16" uuid="bed56d05-f5aa-4104-9718-d7aa44943b3a"/>
+				<textFieldExpression><![CDATA[$F{t_pinjam_No_anggota}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="115" width="44" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="29141cab-d7f6-4071-b458-b66047b143ad"/>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="63" y="115" width="100" height="15" uuid="6d4e9e29-2bc4-4f56-92f7-314d0ee727bf"/>
+				<textFieldExpression><![CDATA[$F{t_pinjam_Nama}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="3" y="66" width="552" height="1" uuid="a65f9ed7-f6c2-45c1-80c0-693be2428b31"/>
+			</line>
+			<image>
+				<reportElement x="3" y="0" width="50" height="50" uuid="eb8d9f04-3ba4-4ee2-9c8f-0f767952e0f4"/>
+				<imageExpression><![CDATA["E:\\KOPERASI\\src\\Icon\\LOGO.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="5712eb5a-9c4f-41cd-9b17-7a64d3f036a8"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="15" width="181" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="b7b25d28-afa6-464c-930c-4942bcc0408e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tgl. Pinjam]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="181" y="15" width="159" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="e0747939-4c96-44fb-8e7c-0a8d95ba3cc6"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Jml. Pinjam]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="340" y="15" width="45" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="256501e2-7fc4-4958-ac58-6e6f6019e397"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Lama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="385" y="15" width="48" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="8a352491-3575-407c-8a83-8cc6b457a8b1"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Bunga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="433" y="15" width="122" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="8cc04623-1b0b-4aee-969c-f920280282e2"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Angsuran]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="08952aa2-7cbc-4948-8ce1-9ab3b2e14c9b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="181" height="15" uuid="85c3313a-1cd3-465c-bce9-a672fe088334"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{t_pinjam_Tgl_pinjam}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="181" y="0" width="159" height="15" uuid="7e5ed230-95d5-4c6e-88e5-38bb27603c1e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{t_pinjam_Jml_pinjam}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="0" width="45" height="15" uuid="ed8ef095-2411-43a4-a65e-02f08622ef08"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{t_pinjam_Lama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="385" y="0" width="48" height="16" uuid="ce61d0f6-28fc-48fe-b0d0-3c6e2973bddd"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{t_pinjam_Bunga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="433" y="0" width="122" height="16" uuid="187a9b31-9198-4ef1-884f-64557966b893"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{t_pinjam_Angsuran}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="a086f872-386f-4425-8aab-8e5e1e6c2777"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="6a31c1e2-db02-4f76-ae14-11c33562d061"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="42572a54-db8c-47fc-b390-5d0c0b1ef71d"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="729d643c-9a8d-451f-876a-37cb4d606882"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

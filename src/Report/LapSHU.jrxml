@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LapSHU" language="groovy" pageWidth="842" pageHeight="283" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="895c3ae3-a149-4c14-bc66-316efb066995">
+	<property name="ireport.zoom" value="0.9075000000000023"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="a2347d36-c63a-4305-b6e4-a48beda7697e"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     t_shu.`Periode1` AS t_shu_Periode1,
+     t_shu.`Periode2` AS t_shu_Periode2,
+     t_shu.`Data` AS t_shu_Data,
+     t_shu.`TotalSHU` AS t_shu_TotalSHU,
+     t_shu.`Pengurus` AS t_shu_Pengurus,
+     t_shu.`Pengurus1` AS t_shu_Pengurus1,
+     t_shu.`Cadangan` AS t_shu_Cadangan,
+     t_shu.`Cadangan1` AS t_shu_Cadangan1,
+     t_shu.`Sosial` AS t_shu_Sosial,
+     t_shu.`Sosial1` AS t_shu_Sosial1,
+     t_shu.`Doorprize` AS t_shu_Doorprize,
+     t_shu.`Doorprize1` AS t_shu_Doorprize1,
+     t_shu.`Anggota` AS t_shu_Anggota,
+     t_shu.`Anggota1` AS t_shu_Anggota1,
+     t_shu.`Sembako` AS t_shu_Sembako,
+     t_shu.`Sembako1` AS t_shu_Sembako1
+FROM
+     `t_shu` t_shu]]>
+	</queryString>
+	<field name="t_shu_Periode1" class="java.sql.Date"/>
+	<field name="t_shu_Periode2" class="java.sql.Date"/>
+	<field name="t_shu_Data" class="java.lang.String"/>
+	<field name="t_shu_TotalSHU" class="java.lang.String"/>
+	<field name="t_shu_Pengurus" class="java.lang.String"/>
+	<field name="t_shu_Pengurus1" class="java.lang.String"/>
+	<field name="t_shu_Cadangan" class="java.lang.String"/>
+	<field name="t_shu_Cadangan1" class="java.lang.String"/>
+	<field name="t_shu_Sosial" class="java.lang.String"/>
+	<field name="t_shu_Sosial1" class="java.lang.String"/>
+	<field name="t_shu_Doorprize" class="java.lang.String"/>
+	<field name="t_shu_Doorprize1" class="java.lang.String"/>
+	<field name="t_shu_Anggota" class="java.lang.String"/>
+	<field name="t_shu_Anggota1" class="java.lang.String"/>
+	<field name="t_shu_Sembako" class="java.lang.String"/>
+	<field name="t_shu_Sembako1" class="java.lang.String"/>
+	<title>
+		<band height="120" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="336" y="65" width="449" height="29" uuid="df8ba46d-4b6c-4d15-a65d-60effbaf95ca"/>
+				<textElement textAlignment="Right">
+					<font size="22" isBold="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="822" height="65" forecolor="#006699" backcolor="#006699" uuid="adae9ff1-6b02-4289-ae8d-a8c69643218c"/>
+				<staticText>
+					<reportElement style="Title" x="231" y="0" width="578" height="65" uuid="7e93ed82-6e04-4930-a5fa-304b13ec4502"/>
+					<textElement textAlignment="Right">
+						<font size="54" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Laporan SHU]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="19" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="14" uuid="45b6a1ef-a8fb-436c-9666-d36cdfa59aee"/>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="105" y="0" width="96" height="14" forecolor="#000000" uuid="5c97a726-658b-43cb-9c25-b3570fbc66e2"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Per-Akhir]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="201" y="0" width="44" height="14" forecolor="#000000" uuid="1229e91c-ed3a-45ab-b839-a86e7e232de2"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Data]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="245" y="0" width="117" height="14" forecolor="#000000" uuid="fb386af7-19c3-469a-a1d9-9bb78b24fdb6"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Total SHU]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="362" y="0" width="77" height="14" forecolor="#000000" uuid="ff7d7c0a-cd74-456c-91d6-6069e8a9eda0"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Pengurus]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="439" y="0" width="77" height="14" forecolor="#000000" uuid="c9b8a20a-c183-4311-9f3e-55aa65eef84e"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Cadangan]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="516" y="0" width="74" height="14" forecolor="#000000" uuid="d26680a3-7407-4ae8-97eb-9b9bff69ed9d"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Sosial]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="590" y="0" width="69" height="14" forecolor="#000000" uuid="fa5aaae9-548e-4a82-9813-187323cffcd4"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Doorprize]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="659" y="0" width="67" height="14" forecolor="#000000" uuid="b17b53f6-3beb-4bb9-9da5-c97b096098eb"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Anggota]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="726" y="0" width="76" height="14" forecolor="#000000" uuid="faed9e08-0995-43dc-a2b7-dcb060f419a5"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Sembako]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="0" y="0" width="105" height="14" forecolor="#000000" uuid="a9e8b473-7f1c-44e9-a3ff-17187c47e3f9"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Per-Awal]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement mode="Transparent" x="105" y="1" width="96" height="13" uuid="aca9b1dd-02ea-4040-be6b-7a77f10dbf67"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="201" y="1" width="44" height="13" uuid="5dda8602-1c60-4a3d-b812-e02e1fb3dcae"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="245" y="1" width="117" height="13" uuid="cc076485-95d7-41bf-8e2b-a3bb82f6b173"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="362" y="1" width="77" height="13" uuid="038c752b-87bb-4d6c-85cd-d7f1caaf0e64"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="439" y="1" width="77" height="13" uuid="4ff1bf6b-3812-4018-8f33-29d9ef8f1c7a"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="516" y="1" width="74" height="13" uuid="7b72a2a8-5e75-4d7f-a727-1203ed24e7e6"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="590" y="1" width="69" height="13" uuid="85ca838a-5d8f-478f-b1ba-0b9807239175"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="659" y="1" width="67" height="13" uuid="03b17400-cdb7-4023-919b-7a799374fc11"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="726" y="1" width="76" height="13" uuid="f89ecc2a-2b8d-44e7-90d9-786f28635919"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="0" y="1" width="105" height="13" uuid="a04efa58-2287-4ad4-a8f5-c62784b601dc"/>
+				</rectangle>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="14" width="802" height="1" uuid="f9724599-4d4b-47c0-8fc2-67db76b9fe6a"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="30" width="802" height="1" uuid="3d19767e-3983-46e2-940f-9de912a7df18"/>
+			</line>
+			<frame>
+				<reportElement x="-7" y="0" width="809" height="14" uuid="188a8415-0230-42ef-8c51-6a4a0dd74532"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="369" y="0" width="77" height="14" uuid="d3613140-4054-43c4-b867-2411b8632ddd"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_shu_Pengurus}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="446" y="0" width="77" height="14" uuid="332c6c6e-2d30-4fd0-9fe5-ec8d605e70a5"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_shu_Cadangan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="523" y="0" width="74" height="14" uuid="57df23bd-6cfa-4a9c-a556-39d466254a15"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_shu_Sosial}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="597" y="0" width="69" height="14" uuid="7f65d192-1763-45ee-a62e-1f02609637ee"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_shu_Doorprize}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="666" y="0" width="67" height="14" uuid="465a399f-84bb-4765-a306-e46292854890"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_shu_Anggota}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="733" y="0" width="76" height="14" uuid="6e036116-e42d-43e2-bc30-56414e05942a"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_shu_Sembako}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="726" y="14" width="76" height="14" uuid="be992ace-2408-434c-b2cc-bd02aff70250"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_shu_Sembako1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="659" y="14" width="67" height="14" uuid="a13cb73c-6fb8-4202-9724-8313a1e00967"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_shu_Anggota1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="590" y="14" width="69" height="14" uuid="f7bb800d-b592-4654-8d85-19586ebb8fef"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_shu_Doorprize1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="516" y="14" width="74" height="14" uuid="2f98626a-97d9-4cbf-afa6-109593e65343"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_shu_Sosial1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="439" y="14" width="77" height="14" uuid="030d2980-39f5-4695-a221-55cf52353bb3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_shu_Cadangan1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="362" y="16" width="77" height="14" uuid="da78cf69-a7d9-4cf2-a8ac-4ee499285457"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_shu_Pengurus1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="0" y="14" width="105" height="14" uuid="d9ec6ed5-7f96-4dd6-b885-ffc9bd5b41db"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_shu_Periode1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="105" y="14" width="96" height="14" uuid="02d4f2d0-cbc9-4047-aea0-615324b4070d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_shu_Periode2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="201" y="14" width="44" height="14" uuid="a7806d4a-8985-4042-bc57-7ca7ebb29107"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_shu_Data}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="245" y="14" width="117" height="14" uuid="82270b37-f9f8-459d-a1ec-bf892dae7d3d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_shu_TotalSHU}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="18" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="941586c5-9f91-4216-a737-4df960759d06"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="800" height="16" forecolor="#D0B48E" backcolor="#006699" uuid="bf749fda-08ef-442e-ba21-0c3618eb2aea"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="753" y="0" width="40" height="16" forecolor="#FFFFFF" uuid="076541fd-a09a-4e9d-aab3-b9005a58880a"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="673" y="0" width="80" height="16" forecolor="#FFFFFF" uuid="8b88e3d8-ff0b-4ea0-bb73-7e956e2af949"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="16" forecolor="#FFFFFF" uuid="fe0ed347-2457-4fc9-a353-5c7d738027ae"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

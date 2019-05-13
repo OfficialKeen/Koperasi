@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LAngsurKode" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b4c4daf-d477-4b45-87cc-ab53d7107b60">
+	<property name="ireport.zoom" value="1.6105100000000068"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="9dc07f57-cae3-4192-9757-ca9a90011504"/>
+	<parameter name="Kode" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     t_angsuran.`Kd_Angsuran` AS t_angsuran_Kd_Angsuran,
+     t_angsuran.`kd_pinjaman` AS t_angsuran_kd_pinjaman,
+     t_angsuran.`Nama` AS t_angsuran_Nama,
+     t_angsuran.`Bulan_ke` AS t_angsuran_Bulan_ke,
+     t_angsuran.`Tipe` AS t_angsuran_Tipe,
+     t_angsuran.`Angsuran_ke` AS t_angsuran_Angsuran_ke,
+     t_angsuran.`Total_Angsur` AS t_angsuran_Total_Angsur,
+     t_angsuran.`Tgl_Angsur` AS t_angsuran_Tgl_Angsur,
+     t_angsuran.`Sisa` AS t_angsuran_Sisa,
+     t_pengurus.`Bendahara` AS t_pengurus_Bendahara
+
+FROM
+     `t_angsuran` t_angsuran,
+     `t_pengurus` t_pengurus
+Where
+     t_angsuran.`kd_pinjaman`=$P{Kode}]]>
+	</queryString>
+	<field name="t_angsuran_Kd_Angsuran" class="java.lang.String"/>
+	<field name="t_angsuran_kd_pinjaman" class="java.lang.String"/>
+	<field name="t_angsuran_Nama" class="java.lang.String"/>
+	<field name="t_angsuran_Bulan_ke" class="java.lang.String"/>
+	<field name="t_angsuran_Tipe" class="java.lang.String"/>
+	<field name="t_angsuran_Angsuran_ke" class="java.lang.String"/>
+	<field name="t_angsuran_Total_Angsur" class="java.lang.String"/>
+	<field name="t_angsuran_Tgl_Angsur" class="java.sql.Date"/>
+	<field name="t_angsuran_Sisa" class="java.lang.String"/>
+	<field name="t_pengurus_Bendahara" class="java.lang.String"/>
+	<title>
+		<band height="149" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="93" y="0" width="466" height="52" forecolor="#006699" backcolor="#006699" uuid="5efd793b-f8af-4717-a424-a6b9494f0141"/>
+				<staticText>
+					<reportElement style="Title" x="11" y="0" width="435" height="52" uuid="b2a75ced-a7ce-4ff1-87d1-0b4a9090c62b"/>
+					<textElement textAlignment="Right">
+						<font size="30" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Laporan Angsuran Per-Anggota]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="5" y="88" width="91" height="14" forecolor="#000000" uuid="9ac25b2a-52c0-42a2-8ff3-e5d63c5aa66f"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Kode Pinjaman]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="111" y="88" width="111" height="14" uuid="7157465c-3de4-47eb-a463-881dae2ae329"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_angsuran_kd_pinjaman}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="4" y="116" width="57" height="14" forecolor="#000000" uuid="9123674b-fbd9-4fef-8461-1ab6310d593e"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="111" y="116" width="111" height="14" uuid="fb818405-c022-43bf-b8db-63f965b6af3e"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_angsuran_Nama}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="63" width="555" height="1" uuid="a35c9591-af8d-4671-8311-9109dd148fbb"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<image>
+				<reportElement x="1" y="2" width="60" height="50" uuid="74a1d25b-7d6f-4440-b374-9d3e207e4955"/>
+				<imageExpression><![CDATA["E:\\KOPERASI\\src\\Report\\LOGO.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<frame>
+				<reportElement x="4" y="0" width="551" height="14" uuid="f0b7b69e-3d29-4a87-9b2c-cdcc760c3e51"/>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="0" y="0" width="92" height="14" forecolor="#000000" uuid="7922171c-9a5e-46a4-977e-67ebf85aed7b"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Kd Angsuran]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="186" y="0" width="55" height="14" forecolor="#000000" uuid="767f01bc-4d20-4892-aca6-e3b853718a0d"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Bulan Ke]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="241" y="0" width="58" height="14" forecolor="#000000" uuid="d4a4b7e3-57db-489a-ad48-4c1c2eafebd6"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Tipe]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="299" y="0" width="68" height="14" forecolor="#000000" uuid="baa7face-b9f4-4110-9b48-683f54b96cb5"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Angsur Ke]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="367" y="0" width="94" height="14" forecolor="#000000" uuid="73f3bbec-18da-43e5-9441-f1f45616c888"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Angsuran]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="92" y="0" width="94" height="14" forecolor="#000000" uuid="18bb8baf-446a-4367-b61e-0a6b9988abd1"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Tgl. Angsur]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="461" y="0" width="88" height="14" forecolor="#000000" uuid="c5398931-791c-4c09-9fe9-d2bc5b823123"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Sisa]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement mode="Transparent" x="1" y="0" width="91" height="14" uuid="517c7111-98bf-4e77-813b-96fca7cff6e0"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="92" y="0" width="94" height="14" uuid="967ce053-651d-4082-a097-9f5da147427b"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="186" y="0" width="55" height="14" uuid="5a773225-b752-4b37-bf68-c3edeea663ad"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="241" y="0" width="58" height="14" uuid="467aaeef-a434-4fa3-942e-55949950d49e"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="299" y="0" width="68" height="14" uuid="12873c84-775e-445f-84a4-9362a9880d04"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="367" y="0" width="94" height="14" uuid="83ab597e-fd4c-4845-8948-52dda96a4473"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="461" y="0" width="88" height="14" uuid="c1729594-4a97-4ce0-b4ae-86711c672303"/>
+				</rectangle>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement x="4" y="0" width="551" height="17" uuid="6fe16582-b0b2-42a3-b0a3-ee5cbb80f85a"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="1" width="92" height="14" uuid="590978eb-bb30-4890-b1bb-3a8055c0c411"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_angsuran_Kd_Angsuran}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="186" y="1" width="55" height="14" uuid="16f17b72-a537-4bda-9b49-f81707f05830"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_angsuran_Bulan_ke}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="241" y="1" width="58" height="14" uuid="7c9c97f5-ec0f-492d-9444-0a0e631d13ec"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_angsuran_Tipe}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="299" y="1" width="68" height="14" uuid="af869add-fb50-4bb4-b6be-7b61f33fe6e8"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_angsuran_Angsuran_ke}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="367" y="1" width="94" height="14" uuid="e8725b28-0cf6-4faa-9730-cf3004348366"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_angsuran_Total_Angsur}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="92" y="1" width="94" height="14" uuid="2d8070d1-c318-44c1-8132-0f41cc8f5edd"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_angsuran_Tgl_Angsur}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="461" y="1" width="88" height="14" uuid="3526665e-e1df-4be8-b67b-212d0d8dfb4e"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_angsuran_Sisa}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="2" y="0" width="553" height="1" uuid="9c794f87-0a45-4756-a4b5-576423d9e4a9"/>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="2" y="17" width="553" height="1" uuid="cc4e9f30-f53b-442f-b5c6-7e344c2aad0f"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="98" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="7e39b582-8869-469e-9913-2b6bbf884ea0"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="357" y="12" width="120" height="14" forecolor="#000000" uuid="f1ce5b29-06d8-4dd4-a6f4-9146986744be"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Mengetahui]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="357" y="74" width="182" height="14" uuid="e497d4a1-42f0-411d-99c7-1b6ada6ed51c"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_pengurus_Bendahara}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="553" height="16" forecolor="#D0B48E" backcolor="#006699" uuid="623885a1-9132-4cdd-8333-dd1972b7cba7"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="16" forecolor="#FFFFFF" uuid="7b0219e3-a520-41a2-8a2b-c111260cb07f"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="16" forecolor="#FFFFFF" uuid="39926331-5c6e-48c0-9adb-40174d1b64be"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="16" forecolor="#FFFFFF" uuid="022ca098-e209-4dcd-b323-df4f3b1d9641"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

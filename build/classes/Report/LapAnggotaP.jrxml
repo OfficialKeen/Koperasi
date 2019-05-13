@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LapAnggotaP" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="428a8449-80c0-402d-98ff-9066380d2f6f">
+	<property name="ireport.zoom" value="1.1000000000000012"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="Tgl1" class="java.lang.String"/>
+	<parameter name="Tgl2" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     t_anggota.`No_anggota` AS t_anggota_No_anggota,
+     t_anggota.`Nama` AS t_anggota_Nama,
+     t_anggota.`Alamat` AS t_anggota_Alamat,
+     t_anggota.`Sim_pokok` AS t_anggota_Sim_pokok,
+     t_anggota.`Adm` AS t_anggota_Adm,
+     t_anggota.`Tgl_masuk` AS t_anggota_Tgl_masuk
+FROM
+     `t_anggota` t_anggota
+WHERE
+Tgl_masuk BETWEEN $P{Tgl1} AND $P{Tgl2}]]>
+	</queryString>
+	<field name="t_anggota_No_anggota" class="java.lang.String"/>
+	<field name="t_anggota_Nama" class="java.lang.String"/>
+	<field name="t_anggota_Alamat" class="java.lang.String"/>
+	<field name="t_anggota_Sim_pokok" class="java.lang.String"/>
+	<field name="t_anggota_Adm" class="java.lang.String"/>
+	<field name="t_anggota_Tgl_masuk" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<textField>
+				<reportElement x="116" y="55" width="103" height="20" uuid="1dea25fb-2efc-4b40-9a90-00b591f8b6a5"/>
+				<textFieldExpression><![CDATA[$P{Tgl1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="55" width="111" height="20" uuid="281d677b-34da-4e5e-9e80-da8536c7d035"/>
+				<textFieldExpression><![CDATA[$P{Tgl2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="72" y="55" width="44" height="20" uuid="84d2a5c9-07eb-4495-901f-6b2f168a5fd7"/>
+				<text><![CDATA[Periode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="72" y="0" width="480" height="33" uuid="6aeae1f6-200b-4a90-bfdc-e4473c5fefaa"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[LAPORAN ANGGOTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="72" y="33" width="319" height="22" forecolor="#000000" uuid="5a26209d-ad45-467d-aa03-28f699cd5d46"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[SRIBHAWONO LAMPUNG TIMUR]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="d945347b-9190-41da-9743-952950e5b039"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="27" height="15" uuid="a3ba4b76-c5ab-4b91-84ca-99d62fa8a089"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="27" y="19" width="111" height="15" uuid="1f96c036-95c7-4ae2-afba-45aaa025f510"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="138" y="19" width="136" height="15" uuid="50e76d47-f195-4078-a5c1-615d515f01ec"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="19" width="92" height="15" uuid="c9764a7f-55e4-4f6b-9097-ea8109bcdedd"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Sim. Pokok]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="368" y="19" width="92" height="15" uuid="a09aeda6-945e-44cf-9e7d-0ea7066c9df4"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Adm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="460" y="19" width="92" height="15" uuid="d8ecf006-a38a-4aca-8d3e-68793cf124c3"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tgl. Masuk]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="07558aea-c136-4997-88d8-3653eda49b85"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="27" height="15" uuid="ed8b9173-fa90-401e-a4f7-455228533a8c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{t_anggota_No_anggota}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="27" y="0" width="111" height="15" uuid="ca00b6c1-8b1d-4723-a25f-9bceceef43c3"/>
+				<textFieldExpression><![CDATA[$F{t_anggota_Nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="138" y="0" width="136" height="15" uuid="42449c6f-bf26-4ace-be95-0692f6c7ba43"/>
+				<textFieldExpression><![CDATA[$F{t_anggota_Alamat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="276" y="0" width="92" height="15" uuid="399a884f-8870-485b-a703-e1d5979687b3"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{t_anggota_Sim_pokok}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="368" y="0" width="92" height="15" uuid="34487ba2-093b-461b-954c-416c5549734b"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{t_anggota_Adm}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="460" y="0" width="92" height="15" uuid="c6f90099-d4a6-40ce-8ee2-0ae8fbc74be8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{t_anggota_Tgl_masuk}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="06bc29f6-0996-418b-a1fb-ae4665430c02"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="52d523ac-a131-46f3-b734-0a7164ebb5ef"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="706c631a-0470-4edd-8ccb-834e946a591a"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="50de0d00-406c-480e-968a-1cf2f9e0eb10"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

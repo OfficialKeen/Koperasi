@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LapSaham" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="865044eb-fa31-4885-941a-2205fee04315">
+	<property name="ireport.zoom" value="1.6105100000000043"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="Tgl1" class="java.lang.String"/>
+	<parameter name="Tgl2" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT NO_ANGGOTA,NAMA,Tgl_masuk,Sim_pokok,THR,BUNGA, COALESCE(Sim_pokok+THR+BUNGA,0)AS 'GRAND TOTAL' FROM (
+	SELECT
+    	A0.NO_ANGGOTA,
+    	A0.NAMA,
+    	A0.SIM_POKOK,
+	A0.TGL_MASUK,
+	SUM(COALESCE(B0.THR,0))AS 'THR',
+    	COALESCE(C0.JML_BUNGA,0)AS 'BUNGA'
+
+    	FROM KOPERASI.t_anggota A0
+	LEFT JOIN KOPERASI.t_simpan B0 ON B0.NO_ANGGOTA=A0.NO_ANGGOTA
+	LEFT JOIN KOPERASI.t_pinjam C0 ON C0.NO_ANGGOTA=A0.NO_ANGGOTA
+
+	WHERE A0.Tgl_masuk BETWEEN $P{Tgl1} AND $P{Tgl2}
+
+	GROUP BY A0.NO_ANGGOTA)A]]>
+	</queryString>
+	<field name="NO_ANGGOTA" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NAMA" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Tgl_masuk" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Sim_pokok" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="THR" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="BUNGA" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="GRAND TOTAL" class="java.lang.Double"/>
+	<variable name="Total" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{GRAND TOTAL}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="77" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="67" y="33" width="243" height="12" forecolor="#000000" uuid="54cae7a2-4f41-4521-86b2-1e8160415a02"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[SRIBHAWONO LAMPUNG TIMUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="67" y="0" width="436" height="33" uuid="296ef422-f788-445b-99cc-137490b18ff7"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[LAPORAN SAHAM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="67" y="50" width="46" height="20" uuid="b4e21c0a-3215-47bd-9fdd-25b04d0cd7e5"/>
+				<text><![CDATA[Periode]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="113" y="50" width="65" height="20" uuid="86deda02-35cb-46d0-9ba8-9af23719b334"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Tgl1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="207" y="50" width="65" height="20" uuid="22ee7f11-b52c-4dbe-9884-9e0427f114eb"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Tgl2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="183" y="50" width="14" height="20" uuid="b75bdf98-87b6-47cf-a5dd-8494fcbdfda9"/>
+				<text><![CDATA[s/d]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="8f9aa23f-0fe7-4e49-aca9-55bfca3ae977"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="79" height="15" uuid="5c911e08-ae54-4edc-bca2-99986f20bf8e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[No. Anggota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="79" y="19" width="128" height="15" uuid="4ebf4af0-ab00-4d98-8b07-f8f681d07106"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[NAMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="207" y="19" width="103" height="15" uuid="0e02c5c9-46b4-44ef-8483-28ada81eaec0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Sim. Pokok]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="310" y="19" width="80" height="15" uuid="646adf05-dea3-4c90-81da-19acde791953"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[THR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="390" y="19" width="94" height="15" uuid="7bf96abf-e185-478f-b334-61229f5c9c0a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Bunga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="484" y="19" width="69" height="15" uuid="f4863c08-68c7-4c2e-9220-35d5c6d3f1fc"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[SubTotal]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="19" width="79" height="15" uuid="437d659d-792d-49fc-bfe7-4c0b6928b453"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="79" y="19" width="128" height="15" uuid="82ab52b2-1e10-4cb5-9c3b-fdf2650ecdca"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="207" y="19" width="103" height="15" uuid="1bc32a74-ce7d-41d7-855c-eee10c3d60d6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="310" y="19" width="80" height="15" uuid="a04409be-a6d0-4286-ad51-f53d41f579ae"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="390" y="19" width="94" height="15" uuid="e529a05c-1123-494c-9ee4-d033465d8d0e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="484" y="19" width="69" height="15" uuid="a5429b56-875d-4c16-a0b5-5ac308fbd468"/>
+			</rectangle>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-2" y="-4" width="555" height="1" uuid="0814c638-8eb6-4818-9c47-8d4605217d6f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="c2daf535-38ad-4980-89a2-f09c9e57a05c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="79" height="15" uuid="e1364a08-f993-474e-bb65-d7bfa9578829"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NO_ANGGOTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="79" y="0" width="128" height="15" uuid="6e9368bf-2695-4aad-93ab-300c8c1e588c"/>
+				<textFieldExpression><![CDATA[$F{NAMA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="207" y="0" width="89" height="15" uuid="fafc7bc4-fb1f-44f9-ad09-9e977bd6e67a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{Sim_pokok}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="310" y="0" width="70" height="15" uuid="c6914e47-00fa-4f89-bf7b-fde088f7b7b4"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{THR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="390" y="0" width="84" height="15" uuid="de7aa411-2bfd-41ea-8e04-ee612058b0f1"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{BUNGA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="484" y="0" width="69" height="15" uuid="a129d302-e960-43a8-ad14-53cb3a5b7205"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{GRAND TOTAL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="d78ff109-f160-4a2a-8894-9c5348fe063d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="e229a35c-ef62-456a-a5a4-c310f7849e5a"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="283f307f-f9ec-46b0-80a9-7b58476db193"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="7a452f02-2c57-48b7-8709-e29f7a2b9678"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="101" splitType="Stretch">
+			<textField>
+				<reportElement x="460" y="5" width="83" height="15" uuid="4962784d-a25f-4c70-b5ca-d51fae55780c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="368" y="5" width="92" height="15" forecolor="#000000" uuid="fd437eb6-4631-4c1b-9f8a-f1b8e58c6f1d"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[GrandTotal      =]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="5" width="555" height="1" uuid="0c55a31b-ba8c-49bd-8fdc-d0152328be2c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

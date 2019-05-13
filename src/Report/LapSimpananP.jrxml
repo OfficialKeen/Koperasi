@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LapSimpanan" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="48d4c91d-7ba1-4502-9ea2-036a057ce23d">
+	<property name="ireport.zoom" value="1.6105100000000032"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="Tgl1" class="java.lang.String"/>
+	<parameter name="Tgl2" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     t_simpan.`kd_simpanan` AS t_simpan_kd_simpanan,
+     t_simpan.`No_anggota` AS t_simpan_No_anggota,
+     t_simpan.`Nama` AS t_simpan_Nama,
+     t_simpan.`Tgl_simpanan` AS t_simpan_Tgl_simpanan,
+     t_simpan.`THR` AS t_simpan_THR,
+     t_simpan.`Saldo` AS t_simpan_Saldo
+FROM
+     `t_simpan` t_simpan
+WHERE
+Tgl_simpanan Between $P{Tgl1} and $P{Tgl2}]]>
+	</queryString>
+	<field name="t_simpan_kd_simpanan" class="java.lang.String"/>
+	<field name="t_simpan_No_anggota" class="java.lang.String"/>
+	<field name="t_simpan_Nama" class="java.lang.String"/>
+	<field name="t_simpan_Tgl_simpanan" class="java.sql.Date"/>
+	<field name="t_simpan_THR" class="java.lang.Integer"/>
+	<field name="t_simpan_Saldo" class="java.lang.String"/>
+	<variable name="SubTotal" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{t_simpan_THR}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="62" y="52" width="45" height="22" uuid="6dd3197f-3065-43e1-bbe7-2ebfaa9849b5"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Periode]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="107" y="53" width="100" height="20" uuid="6b7aed2c-5a62-4723-a0d6-4066f0893cc3"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{Tgl1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="207" y="53" width="15" height="20" uuid="198f38fa-da72-44b7-850a-a81e6a29394c"/>
+				<text><![CDATA[s/d]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="222" y="53" width="100" height="20" uuid="89825252-ba48-4538-ac48-3ae173fef2b2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{Tgl2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="SubTitle" x="62" y="30" width="319" height="22" forecolor="#000000" uuid="77dbc01e-630c-4915-b901-ea5842db2b7d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[SRIBHAWONO LAMPUNG TIMUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="62" y="0" width="480" height="30" uuid="298fc77e-74cf-4173-b42d-5da9a0d5a0ae"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[LAPORAN SIMPANAN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="cc387d44-c0bf-4bee-a4eb-d61228688b2d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="74" height="15" uuid="cd207423-ae8c-4a6c-83d9-0929b80edec4"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Kode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="74" y="19" width="75" height="15" uuid="06ec2397-ab82-4d25-858f-97dd466f97fc"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="149" y="19" width="129" height="15" uuid="cab9071e-45c5-4f2e-88bb-7cdafb3beac0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="278" y="19" width="90" height="15" uuid="5b054387-7d0d-494e-8f6a-7a66e73489b2"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tgl. Simpan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="368" y="19" width="92" height="15" uuid="7297d013-17ad-47f9-9611-6f8affcea14b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Setoran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="460" y="19" width="95" height="15" uuid="a7f5def7-3688-4cad-989f-97c829723d0b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Saldo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="e56d5be2-2a64-4b91-b6a9-1f4ebd7a2e55"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="74" height="15" uuid="e13557ec-0935-4b3c-b7d2-2b0fcae15461"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{t_simpan_kd_simpanan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="74" y="0" width="75" height="15" uuid="000191db-1d58-484e-9f88-970ff60ed39d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{t_simpan_No_anggota}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="149" y="0" width="129" height="15" uuid="16f19241-8aa3-4518-8996-14b57454e383"/>
+				<textFieldExpression><![CDATA[$F{t_simpan_Nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="278" y="0" width="90" height="15" uuid="f2f13b59-286d-4b73-b105-d0d942455567"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{t_simpan_Tgl_simpanan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="368" y="0" width="92" height="15" uuid="389c9b5d-b309-4880-8b38-2afe1d6df73b"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{t_simpan_THR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="460" y="0" width="95" height="15" uuid="607bcf32-fc48-4db2-b9d0-12373a02fd4a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{t_simpan_Saldo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="8dfb1d59-faf5-485e-afd4-de336df31280"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="3187bc54-a2a1-417c-845c-f237aff1403f"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="31cc60cf-840c-4ccb-8472-d035f14dce14"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="f488c353-870f-4203-b8da-17313eeebc4c"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="50">
+			<textField>
+				<reportElement x="455" y="11" width="100" height="20" uuid="546f133f-343c-4567-986c-e14b937c8f49"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SubTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="392" y="11" width="63" height="20" uuid="64161661-ddcd-46f3-ad8a-8f381241b501"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Total Saldo]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1" uuid="a09b124f-20a3-473e-9dcb-f897ecf75215"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</summary>
+	<noData>
+		<band height="50"/>
+	</noData>
+</jasperReport>
